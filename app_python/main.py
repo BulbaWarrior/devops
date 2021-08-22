@@ -20,7 +20,7 @@ app = falcon.App()
 
 time = TimeResource()
 
-app.add_route("/time", time)
+app.add_route("/", time)
 
 if __name__ == "__main__":
     with make_server("", 8000, app) as httpd:
