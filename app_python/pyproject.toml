@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "app_python"
+version = "0.1.0"
+description = "python app that displays time"
+authors = ["Vladislav Kalmykov <vladkalm49@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+falcon = "^3.0.1"
+uWSGI = "^2.0.19"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
