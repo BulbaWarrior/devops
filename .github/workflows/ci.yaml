@@ -79,6 +79,6 @@ jobs:
           
       - name: Publish Docker image
         run: |
-          docker push ${{ env.REGISTRY }}/${{ env.MAGE }}:${{ github.sha }}
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ github.sha }}
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ github.sha }} ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
