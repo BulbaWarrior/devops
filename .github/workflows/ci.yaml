@@ -43,6 +43,7 @@ jobs:
           poetry install
         
       - name: Run linter
+        continue-on-error: true
         run: |
           cd app_python
           poetry run flake8
