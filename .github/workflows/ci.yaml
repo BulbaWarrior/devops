@@ -6,8 +6,6 @@ on:
     branches: 
       - master
       - cicd/gh_actions
-    tags: 
-      - lab*
 
 env:
   IMAGE: falcon
@@ -24,9 +22,10 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v2.1.6
         with:
-          path:
-            - app_python/__pycache__
-            - app_python/.pytest_cache
+          path: |
+            app_python/__pycache__
+            app_python/.pytest_cache
+          key: ${{ runner.os }}-${{ hashFiles('app_python/') }}
 
       - name: Setup Python
         uses: actions/setup-python@v2.2.2
@@ -79,6 +78,6 @@ jobs:
           
       - name: Publish Docker image
         run: |
-          docker push ${{ env.REGISTRY }}/${{ Ienv.MAGE }}:${{ github.sha }}
+          docker push ${{ env.REGISTRY }}/${{ env.MAGE }}:${{ github.sha }}
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ github.sha }} ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
