@@ -4,7 +4,7 @@
             "owner": "flake8",
             "pattern": [
                 {
-                    "regexp": "^(.+)$",
+                    "regexp": "^(.+:\\d+:\\d+:\s.+)$",
                     "message": 1,
                 }
             ]
