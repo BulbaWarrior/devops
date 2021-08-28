@@ -68,20 +68,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Restore cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: /var/lib/docker
-          key: ${{ runner.os }}-docker-${{ hashFiles('Dockerfile') }}
-          restore-keys: |
-            ${{ runner.os }}-docker
-        
       - name: Docker login
         uses: docker/login-action@v1.10.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
         
+      - name: Build 
       - name: Build Docker image
         run: |
           cd app_python
