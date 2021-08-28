@@ -11,6 +11,7 @@ jobs:
       - name: Create github release
         uses: meeDamian/github-release@v2.0.3
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           body: "Commit link for moodle: ${{ github.sha }}"
           allow_override: true
           
