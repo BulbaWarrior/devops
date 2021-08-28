@@ -4,9 +4,11 @@
             "owner": "flake8",
             "pattern": [
                 {
-                    "regexp": "^(.+):(.+)$",
+                    "regexp": "^(.+?):(\\d+?):(\\d+?)(.*)$",
                     "file": 1,
-                    "message": 2
+                    "line": 2,
+                    "column": 3,
+                    "message": 4
                 }
             ]
         }
