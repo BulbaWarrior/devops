@@ -3,3 +3,15 @@ on:
   push:
     tags: lab*
     
+jobs:
+  release:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create github release
+        uses: meeDamian/github-release@v2.0.3
+        with:
+          body: "Commit link for moodle: ${{ github.sha }}"
+          allow_override: true
+          
+    
