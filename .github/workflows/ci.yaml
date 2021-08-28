@@ -74,7 +74,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
         
-      - name: Build 
       - name: Build Docker image
         run: |
           cd app_python
