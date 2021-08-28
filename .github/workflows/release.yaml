@@ -12,7 +12,7 @@ jobs:
         uses: meeDamian/github-release@v2.0.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          body: "Commit link for moodle: ${{ github.sha }}"
+          body: "Commit link for moodle: https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
           allow_override: true
           
     
