@@ -50,6 +50,7 @@ jobs:
           cd app_python
           echo ::add-matcher::.github/flake8_matcher.json
           poetry run flake8
+          echo "::remove-matcher owner=flake8::"
         
       - name: Run tests
         run: |
