@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh '''
                     apt-get update && apt-get install -y --no-install-recommends curl=7.64.0-4+deb10u2
-                    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+                    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | POETRY_HOME=/opt/poetry python
                     cd app_python
                     poetry install
                 '''
