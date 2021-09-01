@@ -16,13 +16,16 @@ class TimeResource:
         resp.text = f"The current time is: {self.get_time_string()}"
 
 
-app = falcon.App()
+def create():
+    app = falcon.App()
 
-time = TimeResource()
+    time = TimeResource()
 
-app.add_route("/", time)
+    app.add_route("/", time)
+    return app
 
 if __name__ == "__main__":
+    app = create()
     with make_server("", 8000, app) as httpd:
         print("Serving on port 8000...")
 
