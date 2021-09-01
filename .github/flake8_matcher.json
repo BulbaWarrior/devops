@@ -1,0 +1,13 @@
+{
+    "problemMatcher": [
+        {
+            "owner": "flake8",
+            "pattern": [
+                {
+                    "regexp": "^(.+:\\d+:\\d+:\\s.+)$",
+                    "message": 1,
+                }
+            ]
+        }
+    ]
+}

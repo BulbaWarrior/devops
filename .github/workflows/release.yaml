@@ -1,0 +1,18 @@
+name: release
+on:
+  push:
+    tags: lab*
+    
+jobs:
+  release:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create github release
+        uses: meeDamian/github-release@v2.0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: "Commit link for moodle: `https://github.com/${{ github.repository }}/commit/${{ github.sha }}`"
+          allow_override: true
+          
+    
