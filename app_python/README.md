@@ -21,6 +21,12 @@ the server will start listening on port 8000
 To add a new dependency run ```poetry add <dependency>```
 To add a development dependency ```poetry add --dev <dev_dependency>```
 
+## Unit tests
+To run unit test cd to `app_python` and run 
+```sh
+poetry run pytest -v
+```
+
 ## Docker
 If you just want to run the application there is a Dockerfile:
 cd 'into app_python'
