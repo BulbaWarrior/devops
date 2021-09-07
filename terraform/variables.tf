@@ -32,7 +32,7 @@ variable "instance_type" {
 variable "instance_key_name" {
   description = "Name of the ssh key used to log in to the instances"
   type        = string
-  default     = "Mac Key"
+  default     = "MyKey"
 }
 
 variable "instance_count" {
@@ -50,5 +50,5 @@ variable "instance_ami" {
 variable "ssh_key_private" {
   description = "Path to the private key used to access instances via ssh"
   type        = string
-  default     = "~/.ssh/MacKey.pem"
+  default     = "~/.ssh/MyKey.pem"
 }
