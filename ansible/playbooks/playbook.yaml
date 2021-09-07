@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: false
+
+  roles:
+    - role: docker_ubuntu
+
+  tasks:
+    - name: Create and start services
+      community.docker.docker_compose:
+        pull: yes
+        project_src: ../app_python/docker-compose.yaml
+      register: output
+
+    - ansible.builtin.debug:
+        var: output

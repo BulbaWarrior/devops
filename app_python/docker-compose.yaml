@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    image: pyapp
+    ports:
+      - 80:8000
