@@ -4,4 +4,4 @@
   become: true
 
   roles:
-    - role: '../roles/docker_ubuntu'
+    - role: '../roles/application_compose'

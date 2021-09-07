@@ -1,0 +1,21 @@
+- name: Make sure project directory exists
+  file:
+    owner: "{{ file_owner }}"
+    path: "{{ project_dir }}"
+    state: directory
+    mode: "755"
+
+- name: Upload docker-compose.yaml
+  template:
+    src: docker-compose.yaml.j2
+    dest: "{{ project_dir }}/docker-compose.yaml"
+    mode: "644"
+    owner: "{{ file_owner }}"
+
+- name: Run docker-compose
+  become: true
+  community.docker.docker_compose:
+    pull: true
+    state: present
+    recreate: always
+    remove_orphans: true

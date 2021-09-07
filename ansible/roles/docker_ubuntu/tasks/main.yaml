@@ -8,6 +8,17 @@
   notify: restart docker
   ignore_errors: "{{ ansible_check_mode }}"
 
+- name: Ensure pip is installed
+  package:
+    name: python3-pip
+    state: present
+
+- name: Install docker for python
+  pip:
+    name:
+      - docker
+    state: present
+
 - name: Ensure /etc/docker/ directory exists.
   file:
     path: /etc/docker

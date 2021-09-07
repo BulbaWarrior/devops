@@ -1,0 +1,11 @@
+file_owner: ubuntu
+
+# name of the directory in /opt on the VMs
+project_dir: /opt/compose_app
+
+# docker image to be run (with tag)
+docker_image: bulbawarrior/falcon:latest
+
+# ports to be forwarded to the container
+ports:
+  - 80:8000
