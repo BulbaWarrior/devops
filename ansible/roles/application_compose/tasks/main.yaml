@@ -13,8 +13,8 @@
     owner: "{{ file_owner }}"
 
 - name: Run docker-compose
-  become: true
   community.docker.docker_compose:
+    project_src: "{{ project_dir }}"
     pull: true
     state: present
     recreate: always
