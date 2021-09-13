@@ -15,8 +15,8 @@ services:
   promtail:
     image: grafana/promtail:2.3.0
     volumes:
-      - /var/lib/docker/containers:/var/lib/docker/containers
-      - ./promtail/config.yml:/etc/promtail/config.yml
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./promtail/config.yml:/etc/promtail/config.yml:ro
     command: -config.file=/etc/promtail/config.yml
     networks:
       - loki
@@ -37,5 +37,6 @@ services:
     logging:
       driver: "json-file"
       options:
-        tag:
-          "{{.ImageName}}|{{.Name}}"
+        tag: "{{.ImageName}}|{{.Name}}"
+        max-file: "5"
+        max-size: "10m"
