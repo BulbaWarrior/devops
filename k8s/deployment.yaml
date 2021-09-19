@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app
+  name: app
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - image: bulbawarrior/falcon
+        imagePullPolicy: Always
+        name: falcon
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+      restartPolicy: Always
