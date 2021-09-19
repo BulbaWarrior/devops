@@ -12,3 +12,11 @@
 ## Using k8s manifests
 
 ![image](https://user-images.githubusercontent.com/42455524/133932352-d2c61b16-f4ec-45ed-9098-de5451dedc82.png)
+
+## Using helm charts
+![image](https://user-images.githubusercontent.com/42455524/133935073-d7016c2e-6221-4b4d-93a1-6b80d7ee4771.png)
+
+![image](https://user-images.githubusercontent.com/42455524/133935138-77eee928-0157-4fa4-b009-fe408636155b.png)
+
+### minikube dashboard
+![image](https://user-images.githubusercontent.com/42455524/133935178-50dc8a60-c141-4f78-8778-4c367f1dba60.png)
