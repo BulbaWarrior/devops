@@ -18,9 +18,11 @@ RUN adduser -D falcon
 COPY --from=depmanager /dependencies/requirements.txt .
 # installing uWSGI as binary saves about 120MB
 RUN apk add --no-cache uwsgi=2.0.19.1-r2 && \
-    pip install --no-cache-dir -r requirements.txt --prefer-binary --compile
+    pip install --no-cache-dir -r requirements.txt --prefer-binary --compile && \
+    mkdir media && chown falcon:root media
 
 USER falcon
 COPY . .
+
 EXPOSE 8000
 CMD ["python", "main.py"]
