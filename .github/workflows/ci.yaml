@@ -55,6 +55,8 @@ jobs:
       - name: Run tests
         run: |
           cd app_python
+          mkdir -p media
+          touch visits
           poetry run pytest -v
         
   build:
