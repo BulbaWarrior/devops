@@ -51,8 +51,16 @@ spec:
                 secretKeyRef:
                   name: {{ include "falcon.fullname" . }}
                   key: password
+          volumeMounts:
+            - name: config
+              mountPath: {{ .Values.configPath }}
+              readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "falcon.fullname" . }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
