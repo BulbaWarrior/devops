@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "falcon.fullname" . }}
   labels:
@@ -8,6 +8,8 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  serviceName: {{ include "falcon.fullname" . }}
+  podManagementPolicy: Parallel
   selector:
     matchLabels:
       {{- include "falcon.selectorLabels" . | nindent 6 }}
@@ -52,13 +54,15 @@ spec:
                   name: {{ include "falcon.fullname" . }}
                   key: password
           volumeMounts:
-            - name: config
+            - name: {{ include "falcon.fullname" . }}-config
               mountPath: {{ .Values.configPath }}
               readOnly: true
+            - name: {{ include "falcon.fullname" . }}-state
+              mountPath: {{ .Values.statePath }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-        - name: config
+        - name: {{ include "falcon.fullname" . }}-config
           configMap:
             name: {{ include "falcon.fullname" . }}
       {{- with .Values.nodeSelector }}
@@ -73,3 +77,12 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ include "falcon.fullname" . }}-state
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: {{ .Values.volume.memory }}

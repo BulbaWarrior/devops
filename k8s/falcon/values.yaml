@@ -11,6 +11,10 @@ image:
   tag: "latest"
 
 configPath: "/config"
+statePath: "/app/media"
+volume:
+  memory:
+    200M
 
 imagePullSecrets: []
 nameOverride: ""
